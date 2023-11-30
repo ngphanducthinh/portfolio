@@ -1,12 +1,62 @@
 <script setup lang="ts">
-onMounted(() => {
-  const cards = [...document.getElementsByClassName("card")];
-  const cardWrappers = [...document.getElementsByClassName("card-wrapper")];
+/**
+ * Data
+ */
+const cardRefs = ref<HTMLDivElement[]>([]);
+const cardWrapperRefs = ref<HTMLDivElement[]>([]);
+const frozenGap = 400;
+const frozenGapScaleBlur = frozenGap * 0.4;
+let cardWrapperHeight = 0;
+let breakPoints: number[] = [];
 
-  const frozenGap = 400;
-  const frozenGapScaleBlur = frozenGap * 0.4;
-  const cardWrapperHeight = cardWrappers[0].offsetHeight;
-  const breakPoints = cardWrappers.map((_, i) => cardWrapperHeight * (i + 1));
+/**
+ * Methods
+ */
+const isScrollingWithinGap = (index: number, gap: number) =>
+  index > 0 &&
+  breakPoints[index - 1] <= scrollY &&
+  scrollY < breakPoints[index - 1] + gap;
+
+const updateCardStyle = (index: number, currentScrollYInsideCard: number) => {
+  const currentScrollYInsideCardActual = Math.max(
+    0,
+    currentScrollYInsideCard - frozenGapScaleBlur,
+  );
+  const scaleValue = 1 - currentScrollYInsideCardActual / cardWrapperHeight;
+  cardRefs.value[index].style.transform = `scale(${Math.max(
+    0.65,
+    scaleValue,
+  )})`;
+  cardWrapperRefs.value[index].style.filter = `blur(${
+    (1 - scaleValue) * 12
+  }px)`;
+};
+
+const resetCardStyle = (index: number) => {
+  cardRefs.value[index].style.transform = `scale(1)`;
+  cardWrapperRefs.value[index].style.filter = `blur(0)`;
+};
+
+const updateNextCardStyle = (
+  index: number,
+  currentScrollYInsideCard: number,
+) => {
+  const translateY = Math.max(0, frozenGap - currentScrollYInsideCard);
+  const translateYRatio = 0.2;
+  cardWrapperRefs.value[index + 1].style.transform = `translateY(${
+    translateY * translateYRatio
+  }px)`;
+};
+
+const resetNextCardStyle = (index: number) => {
+  cardWrapperRefs.value[index + 1].style.transform = `translateY(0)`;
+};
+
+onMounted(() => {
+  cardWrapperHeight = cardWrapperRefs.value[0].offsetHeight;
+  breakPoints = cardWrapperRefs.value.map(
+    (_, i) => cardWrapperHeight * (i + 1),
+  );
 
   window.addEventListener("scroll", function () {
     const scrollY = window.scrollY;
@@ -14,7 +64,7 @@ onMounted(() => {
     const currentScrollYInsideCard = scrollY - cardWrapperHeight * index;
 
     if (isScrollingWithinGap(index, frozenGap)) {
-      if (index < cardWrappers.length - 1) {
+      if (index < cardWrapperRefs.value.length - 1) {
         updateNextCardStyle(index, currentScrollYInsideCard);
       }
     } else {
@@ -31,66 +81,25 @@ onMounted(() => {
       updateCardStyle(index, currentScrollYInsideCard);
     }
   });
-
-  const isScrollingWithinGap = (index, gap) =>
-    index > 0 &&
-    breakPoints[index - 1] <= scrollY &&
-    scrollY < breakPoints[index - 1] + gap;
-
-  const updateCardStyle = (index, currentScrollYInsideCard) => {
-    const currentScrollYInsideCardActual = Math.max(
-      0,
-      currentScrollYInsideCard - frozenGapScaleBlur,
-    );
-    const scaleValue = 1 - currentScrollYInsideCardActual / cardWrapperHeight;
-    cards[index].style.transform = `scale(${Math.max(0.6, scaleValue)})`;
-    cardWrappers[index].style.filter = `blur(${(1 - scaleValue) * 12}px)`;
-  };
-
-  const resetCardStyle = (index) => {
-    cards[index].style.transform = `scale(1)`;
-    cardWrappers[index].style.filter = `blur(0)`;
-  };
-
-  const updateNextCardStyle = (index, currentScrollYInsideCard) => {
-    const translateY = Math.max(0, frozenGap - currentScrollYInsideCard);
-    const translateYRatio = 0.2;
-    cardWrappers[index + 1].style.transform = `translateY(${
-      translateY * translateYRatio
-    }px)`;
-  };
-
-  const resetNextCardStyle = (index) => {
-    cardWrappers[index + 1].style.transform = `translateY(0)`;
-  };
 });
 </script>
 
 <template>
   <div class="card-stack">
-    <div class="card-wrapper">
-      <div class="card">Card 1</div>
-    </div>
-    <div class="card-wrapper">
-      <div class="card">Card 2</div>
-    </div>
-    <div class="card-wrapper">
-      <div class="card">Card 3</div>
-    </div>
-    <div class="card-wrapper">
-      <div class="card">Card 4</div>
-    </div>
-    <div class="card-wrapper">
-      <div class="card">Card 5</div>
-    </div>
-    <div class="card-wrapper">
-      <div class="card">Card 6</div>
+    <div
+      v-for="index in 6"
+      :key="index"
+      ref="cardWrapperRefs"
+      class="card-wrapper"
+    >
+      <div ref="cardRefs" class="card">Card {{ index }}</div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .card-stack {
+  background-color: black;
 }
 
 .card-wrapper {
@@ -112,7 +121,7 @@ onMounted(() => {
 }
 
 .card-wrapper:first-child .card {
-  background-color: slategray;
+  background-color: whitesmoke;
 }
 
 .card-wrapper:nth-child(2) .card {
