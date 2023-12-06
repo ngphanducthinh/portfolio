@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Introduction from "~/components/Introduction.vue";
+
 /**
  * Data
  */
@@ -8,6 +10,12 @@ const frozenGap = 400;
 const frozenGapScaleBlur = frozenGap * 0.4;
 let cardWrapperHeight = 0;
 let breakPoints: number[] = [];
+const cards = shallowRef([
+  Introduction,
+  Introduction,
+  Introduction,
+  Introduction,
+]);
 
 /**
  * Methods
@@ -87,12 +95,14 @@ onMounted(() => {
 <template>
   <div class="card-stack">
     <div
-      v-for="index in 6"
+      v-for="(card, index) in cards"
       :key="index"
       ref="cardWrapperRefs"
       class="card-wrapper"
     >
-      <div ref="cardRefs" class="card">Card {{ index }}</div>
+      <div ref="cardRefs" class="card">
+        <component :is="card" />
+      </div>
     </div>
   </div>
 </template>
@@ -113,9 +123,6 @@ onMounted(() => {
 
 .card {
   border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: calc(100dvh - 48px);
   transition: transform 120ms ease-out;
 }

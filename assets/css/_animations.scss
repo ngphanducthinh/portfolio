@@ -1,6 +1,10 @@
 // Rotate animation
 .animation-rotate {
-  animation: rotateAnimation 1.4s ease;
+  animation: rotateAnimation 1.4s linear;
+
+  &--infinite {
+    animation: rotateAnimation 4s linear infinite;
+  }
 }
 
 @keyframes rotateAnimation {
@@ -36,8 +40,14 @@
 }
 
 @keyframes slide-down {
-  0% { opacity: 0; transform: translateY(-120%); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-120%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // Iris out animation: https://tvtropes.org/pmwiki/pmwiki.php/Main/IrisOut
@@ -46,8 +56,12 @@
 }
 
 @keyframes irisOut {
-  0% { clip-path: circle(0%); }
-  100% { clip-path: circle(100%); }
+  0% {
+    clip-path: circle(0%);
+  }
+  100% {
+    clip-path: circle(100%);
+  }
 }
 
 .animation-iris-out-circle {
@@ -55,8 +69,12 @@
 }
 
 @keyframes irisOutCircle {
-  0% { clip-path: circle(0%); }
-  100% { clip-path: circle(50%); }
+  0% {
+    clip-path: circle(0%);
+  }
+  100% {
+    clip-path: circle(50%);
+  }
 }
 
 // Chevron animation
@@ -70,13 +88,25 @@
 }
 
 @keyframes chevron-enter {
-  0% { clip-path: polygon(-25% 0%, 0% 50%, -25% 100%, -100% 100%, -75% 50%, -100% 0%); }
-  75% { clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%); }
-  100% { clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 0% 100%, 0% 50%, 0% 0%); }
+  0% {
+    clip-path: polygon(-25% 0%, 0% 50%, -25% 100%, -100% 100%, -75% 50%, -100% 0%);
+  }
+  75% {
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+  }
+  100% {
+    clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 0% 100%, 0% 50%, 0% 0%);
+  }
 }
 
 @keyframes chevron-leave {
-  0% { clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 0% 100%, 0% 50%, 0% 0%); }
-  25% { clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%); }
-  100% { clip-path: polygon(175% 0%, 200% 50%, 175% 100%, 100% 100%, 125% 50%, 100% 0%) }
+  0% {
+    clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 0% 100%, 0% 50%, 0% 0%);
+  }
+  25% {
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+  }
+  100% {
+    clip-path: polygon(175% 0%, 200% 50%, 175% 100%, 100% 100%, 125% 50%, 100% 0%)
+  }
 }
