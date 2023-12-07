@@ -1,1 +1,3 @@
-hiddenhidden
+module.exports = {
+  safelist: ["invisible"],
+};

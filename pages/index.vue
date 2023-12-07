@@ -3,6 +3,7 @@ import Introduction from "~/components/Introduction.vue";
 import DetailOne from "~/components/DetailOne.vue";
 import DetailTwo from "~/components/DetailTwo.vue";
 import DetailThree from "~/components/DetailThree.vue";
+import DetailFour from "~/components/DetailFour.vue";
 
 /**
  * Data
@@ -13,7 +14,13 @@ const frozenGap = 400;
 const frozenGapScaleBlur = frozenGap * 0.4;
 let cardWrapperHeight = 0;
 let breakPoints: number[] = [];
-const cards = shallowRef([Introduction, DetailOne, DetailTwo, DetailThree]);
+const cards = shallowRef([
+  Introduction,
+  DetailOne,
+  DetailTwo,
+  DetailThree,
+  DetailFour,
+]);
 
 /**
  * Methods
@@ -123,29 +130,6 @@ onMounted(() => {
   border-radius: 16px;
   height: calc(100dvh - 48px);
   transition: transform 120ms ease-out;
-}
-
-.card-wrapper:first-child .card {
   background-color: whitesmoke;
-}
-
-.card-wrapper:nth-child(2) .card {
-  background-color: whitesmoke;
-}
-
-.card-wrapper:nth-child(3) .card {
-  background-color: saddlebrown;
-}
-
-.card-wrapper:nth-child(4) .card {
-  background-color: cornflowerblue;
-}
-
-.card-wrapper:nth-child(5) .card {
-  background-color: orange;
-}
-
-.card-wrapper:nth-child(6) .card {
-  background-color: palevioletred;
 }
 </style>

@@ -1,16 +1,24 @@
 <script lang="ts" setup>
-import vInViewPort from "~/directives/vInViewPort";
+import { useAnimation } from "#imports";
+
+/**
+ * Data
+ */
+const screenShotSectionRef = ref<HTMLElement | null>(null);
+const projectInfoRef = ref<HTMLElement | null>(null);
+const tasksRef = ref<HTMLElement | null>(null);
+useAnimation([tasksRef, screenShotSectionRef, projectInfoRef]);
 </script>
 
 <template>
   <CardTwoThree>
     <template #topLeft>
-      <ol class="text-xl">
+      <ol class="text-xl" ref="tasksRef">
         <li>- Implement...</li>
       </ol>
     </template>
     <template #topRight>
-      <div class="flex h-full justify-end gap-4" v-in-view-port="{ offset: 0 }">
+      <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
         <img
           src="/images/detail-one/expense-management-dashboard.png"
           alt="expense-management-dashboard"
@@ -29,7 +37,7 @@ import vInViewPort from "~/directives/vInViewPort";
       </div>
     </template>
     <template #bottomLeft>
-      <div class="flex flex-wrap gap-4">
+      <div class="flex flex-wrap gap-4" ref="projectInfoRef">
         <h1 class="w-full text-3xl font-semibold">
           Rakuten Card - Expense Management
         </h1>
