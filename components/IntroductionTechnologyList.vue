@@ -1,73 +1,110 @@
 <script lang="ts" setup>
-onMounted(() => {
-  const stickers = [...document.getElementsByClassName("sticker")];
-  const centerPos = {
-    x: Math.round(window.innerWidth / 2),
-    y: Math.round(window.innerHeight / 2),
+/**
+ * Data
+ */
+const stickerRefs = ref<HTMLDivElement[]>([]);
+const stickers = ref([
+  {
+    image: "/images/nuxt.svg",
+    position: {
+      top: 80,
+      left: 80,
+    },
+  },
+  {
+    image: "/images/sass.svg",
+    position: {
+      top: 80,
+      right: 180,
+    },
+  },
+  {
+    image: "/images/storybook.png",
+    position: {
+      top: 150,
+      left: 210,
+    },
+  },
+  {
+    image: "/images/typescript.png",
+    position: {
+      top: 180,
+      right: 390,
+    },
+  },
+  {
+    image: "/images/vite.svg",
+    position: {
+      top: 210,
+      left: 60,
+    },
+  },
+  {
+    image: "/images/vitest.svg",
+    position: {
+      top: 220,
+      right: 280,
+    },
+  },
+  {
+    image: "/images/vue.png",
+    position: {
+      top: 50,
+      right: 450,
+    },
+  },
+]);
+const MAX_MOVEMENT = 16; // 32px
+const centerPosition: { x: number; y: number } = {
+  x: 0,
+  y: 0,
+};
+
+/**
+ * Methods
+ */
+const onMousemove = (e: MouseEvent) => {
+  const mousePosition = { x: e.clientX, y: e.clientY };
+  const mousePositionOverCenter = {
+    x: mousePosition.x - centerPosition.x,
+    y: mousePosition.y - centerPosition.y,
   };
-  const maxMovement = 32;
-
-  window.addEventListener("mousemove", (e) => {
-    const mousePos = { x: e.clientX, y: e.clientY };
-    const mousePosOverCenter = {
-      x: mousePos.x - centerPos.x,
-      y: mousePos.y - centerPos.y,
-    };
-    const stickerTranslate = {
-      x: (mousePosOverCenter.x * maxMovement) / centerPos.x,
-      y: (mousePosOverCenter.y * maxMovement) / centerPos.y,
-    };
-
-    stickers.forEach((sticker) => {
-      sticker.style.transform = `translate(${stickerTranslate.x}px, ${stickerTranslate.y}px)`;
-    });
+  const stickerTranslate = {
+    x: (mousePositionOverCenter.x * MAX_MOVEMENT) / centerPosition.x,
+    y: (mousePositionOverCenter.y * MAX_MOVEMENT) / centerPosition.y,
+  };
+  stickerRefs.value.forEach((sticker) => {
+    sticker.style.transform = `translate(${stickerTranslate.x}px, ${stickerTranslate.y}px)`;
   });
+};
+
+/**
+ * Lifecycle hooks
+ */
+onMounted(() => {
+  centerPosition.x = Math.round(window.innerWidth / 2);
+  centerPosition.y = Math.round(window.innerHeight / 2);
+  window.addEventListener("mousemove", onMousemove);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("mousemove", onMousemove);
 });
 </script>
 
 <template>
   <div class="relative">
-    <div class="sticker animation-land">
-      <img
-        src="https://static-00.iconduck.com/assets.00/storybook-icon-icon-1645x2048-ir1mrc43.png"
-        class="sticker__img"
-      />
-    </div>
-
-    <div class="sticker animation-land">
-      <img
-        src="https://sass-lang.com/assets/img/logos/logo.svg"
-        class="sticker__img"
-      />
-    </div>
-
-    <div class="sticker animation-land">
-      <img src="https://vitest.dev/logo.svg" class="sticker__img" />
-    </div>
-
-    <div class="sticker animation-land">
-      <img src="https://vitejs.dev/logo.svg" class="sticker__img" />
-    </div>
-
-    <div class="sticker animation-land">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1024px-Typescript_logo_2020.svg.png"
-        class="sticker__img"
-      />
-    </div>
-
-    <div class="sticker animation-land">
-      <img
-        src="https://nuxt.com/assets/design-kit/icon-green.svg"
-        class="sticker__img"
-      />
-    </div>
-
-    <div class="sticker animation-land">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/640px-Vue.js_Logo_2.svg.png"
-        class="sticker__img"
-      />
+    <div
+      v-for="sticker in stickers"
+      :key="sticker.image"
+      ref="stickerRefs"
+      class="sticker animation-land"
+      :style="{
+        top: `${sticker.position.top}px`,
+        left: `${sticker.position.left}px`,
+        right: `${sticker.position.right}px`,
+      }"
+    >
+      <img :src="sticker.image" class="sticker__img" :alt="sticker.image" />
     </div>
   </div>
 </template>
@@ -76,41 +113,9 @@ onMounted(() => {
 .sticker {
   will-change: transform;
   position: absolute;
-}
-
-.sticker:first-child {
-  top: 80px;
-  left: 100px;
-}
-
-.sticker:nth-child(2) {
-  top: 80px;
-  right: 180px;
-}
-
-.sticker:nth-child(3) {
-  top: 150px;
-  left: 210px;
-}
-
-.sticker:nth-child(4) {
-  top: 180px;
-  right: 390px;
-}
-
-.sticker:nth-child(5) {
-  top: 210px;
-  left: 80px;
-}
-
-.sticker:nth-child(6) {
-  top: 220px;
-  right: 280px;
-}
-
-.sticker:nth-child(7) {
-  top: 50px;
-  right: 450px;
+  transition:
+    top 1s,
+    left 1s;
 }
 
 .sticker__img {

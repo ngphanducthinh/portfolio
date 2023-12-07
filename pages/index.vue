@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import Introduction from "~/components/Introduction.vue";
+import DetailOne from "~/components/DetailOne.vue";
+import DetailTwo from "~/components/DetailTwo.vue";
+import DetailThree from "~/components/DetailThree.vue";
 
 /**
  * Data
@@ -10,12 +13,7 @@ const frozenGap = 400;
 const frozenGapScaleBlur = frozenGap * 0.4;
 let cardWrapperHeight = 0;
 let breakPoints: number[] = [];
-const cards = shallowRef([
-  Introduction,
-  Introduction,
-  Introduction,
-  Introduction,
-]);
+const cards = shallowRef([Introduction, DetailOne, DetailTwo, DetailThree]);
 
 /**
  * Methods
@@ -132,7 +130,7 @@ onMounted(() => {
 }
 
 .card-wrapper:nth-child(2) .card {
-  background-color: yellowgreen;
+  background-color: whitesmoke;
 }
 
 .card-wrapper:nth-child(3) .card {

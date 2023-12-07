@@ -27,8 +27,8 @@ const downloadResume = () => {
         >
           <BaseIcon
             icon="arrow-down-to-line"
-            height="36"
-            width="36"
+            :height="36"
+            :width="36"
             color="white"
           />
         </div>
@@ -95,8 +95,8 @@ const downloadResume = () => {
         <div class="flex justify-end">
           <BaseIcon
             icon="hand-point-down"
-            width="36"
-            height="36"
+            :width="36"
+            :height="36"
             color="rgb(107 114 128)"
             class="animate-bounce"
           />
