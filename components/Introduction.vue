@@ -1,11 +1,4 @@
-<script lang="ts" setup>
-/**
- * Methods
- */
-const downloadResume = () => {
-  console.log("Download resume!");
-};
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <CardTwoOne>
@@ -13,27 +6,6 @@ const downloadResume = () => {
       <IntroductionTechnologyList />
     </template>
     <template #topRight>
-      <div class="flex flex-wrap items-center justify-end gap-4">
-        <div class="animation-slide-down">
-          <div class="flex items-center rounded-3xl bg-white px-4 py-1">
-            <span class="text-gray-600">{{ "Check out my" }}</span>
-            &nbsp;
-            <span class="font-semibold">{{ "Résumé" }}</span>
-          </div>
-        </div>
-        <div
-          class="animation-slide-down flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-black hover:bg-black/80"
-          @click="downloadResume"
-        >
-          <BaseIcon
-            icon="arrow-down-to-line"
-            :height="36"
-            :width="36"
-            color="white"
-          />
-        </div>
-      </div>
-
       <div class="mt-3 flex flex-wrap items-center justify-end gap-4">
         <div class="animation-slide-down">
           <div class="flex items-center rounded-3xl bg-white px-4 py-1">
@@ -46,6 +18,7 @@ const downloadResume = () => {
         <a
           href="https://certificates.dev/vuejs/certificates/9a23b63b-5b56-4f47-8c7e-3760903b1ed2"
           class="animation-slide-down"
+          target="_blank"
         >
           <img
             src="https://certificates.dev/images/developer.svg"
@@ -67,18 +40,20 @@ const downloadResume = () => {
         </div>
         <div class="flex w-full items-end gap-2">
           <div
-            class="animation-chevron h-[140px] w-[140px] rounded-full bg-[url('https://i.pinimg.com/736x/28/bc/24/28bc24a099da115672d1d77d7395f545.jpg')] bg-cover bg-center bg-no-repeat"
+            class="animation-chevron h-[140px] w-[140px] rounded-full bg-[url('/images/avatar.jpeg')] bg-cover bg-center bg-no-repeat"
           />
           <a
-            href="#"
+            href="https://www.linkedin.com/in/ngphanducthinh/"
             class="animation-chevron flex h-12 w-12 items-center justify-center rounded-full bg-gray-200"
+            target="_blank"
           >
             <BaseIcon icon="linkedin-in" />
           </a>
 
           <a
-            href="#"
+            href="https://github.com/ngphanducthinh"
             class="animation-chevron flex h-12 w-12 items-center justify-center rounded-full bg-gray-200"
+            target="_blank"
           >
             <BaseIcon icon="github" />
           </a>

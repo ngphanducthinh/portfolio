@@ -23,17 +23,17 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
     <template #topRight>
       <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
         <img
-          src="/images/detail-one/expense-management-dashboard.png"
+          src="/images/detail-one/dashboard.png"
           alt="expense-management-dashboard"
           class="h-full rounded-2xl"
         />
         <img
-          src="/images/detail-one/expense-management-recent-months-filter.png"
+          src="/images/detail-one/recent-months-filter.png"
           alt="expense-management-dashboard"
           class="mt-4 h-full rounded-2xl"
         />
         <img
-          src="/images/detail-one/expense-management-recent-months.png"
+          src="/images/detail-one/recent-months.png"
           alt="expense-management-recent-months"
           class="h-full rounded-2xl"
         />
@@ -41,7 +41,7 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
     </template>
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
-        <h1 class="w-full text-3xl font-semibold">Diag - Patient Portal</h1>
+        <h1 class="w-full text-3xl font-semibold">Diag - Design System</h1>
         <div class="flex w-full gap-4">
           <div class="rounded-3xl border p-2">
             {{ "Vue 3" }}

@@ -7,15 +7,15 @@ const stickers = ref([
   {
     image: "/images/nuxt.svg",
     position: {
-      top: 80,
-      left: 0,
+      top: 60,
+      left: 30,
     },
   },
   {
     image: "/images/sass.svg",
     position: {
-      top: 80,
-      right: 200,
+      top: 60,
+      right: 240,
     },
   },
   {

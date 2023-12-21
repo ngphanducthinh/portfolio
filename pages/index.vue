@@ -4,6 +4,10 @@ import DetailOne from "~/components/DetailOne.vue";
 import DetailTwo from "~/components/DetailTwo.vue";
 import DetailThree from "~/components/DetailThree.vue";
 import DetailFour from "~/components/DetailFour.vue";
+import DetailFive from "~/components/DetailFive.vue";
+import DetailSix from "~/components/DetailSix.vue";
+import DetailSeven from "~/components/DetailSeven.vue";
+import DetailEight from "~/components/DetailEight.vue";
 
 /**
  * Data
@@ -20,6 +24,10 @@ const cards = shallowRef([
   DetailTwo,
   DetailThree,
   DetailFour,
+  DetailFive,
+  DetailSix,
+  DetailSeven,
+  DetailEight,
 ]);
 
 /**
