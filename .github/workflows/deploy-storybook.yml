@@ -1,36 +1,42 @@
-name: Deploy to Another Branch
-
+# https://github.com/actions/deploy-pages#usage
+# https://nuxt.com/deploy/github-pages
+name: Deploy to GitHub Pages
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - run: corepack enable
+      - uses: actions/setup-node@v3
         with:
-          node-version: 18
-
-      - name: Install Dependencies
-        run: |
-          npm install
-
-      - name: Build
-        run: |
-          npm run generate
-
-      - name: Deploy to gh branch
-        run: |
-          git config user.email "ngphanducthinh@gmail.com"
-          git config user.name "Thinh Nguyen"
-          git checkout -b gh
-          it add .output/public
-          git commit -m "Deploy .output/public to gh-pages"
-          git push origin gh
+          node-version: "20"
+      # Pick your own package manager and build script
+      - run: npm install
+      - run: npm run build --preset=github_pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./.output/public
+  # Deployment job
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    # Deploy to the github_pages environment
+    environment:
+      name: github_pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
