@@ -65,7 +65,16 @@ const resetNextCardStyle = (index: number) => {
   cardWrapperRefs.value[index + 1].style.transform = `translateY(0)`;
 };
 
+const scrollToTop = () => {
+  if (window) {
+    window.scrollTo({ top: 0 });
+  }
+};
+
 onMounted(() => {
+  setTimeout(() => {
+    scrollToTop();
+  });
   cardWrapperHeight = cardWrapperRefs.value[0].offsetHeight;
   breakPoints = cardWrapperRefs.value.map(
     (_, i) => cardWrapperHeight * (i + 1),

@@ -1,21 +1,24 @@
 <script lang="ts" setup>
 import { useAnimation } from "#imports";
+import BaseList from "~/components/Base/List.vue";
 
 /**
  * Data
  */
 const screenShotSectionRef = ref<HTMLElement | null>(null);
 const projectInfoRef = ref<HTMLElement | null>(null);
-const tasksRef = ref<HTMLElement | null>(null);
-useAnimation([tasksRef, screenShotSectionRef, projectInfoRef]);
+useAnimation([screenShotSectionRef, projectInfoRef]);
 </script>
 
 <template>
   <CardTwoThree>
     <template #topLeft>
-      <ol class="text-xl" ref="tasksRef">
-        <li>- Implement...</li>
-      </ol>
+      <BaseList>
+        <BaseListItem>
+          Improve web performance using asynchronous components and image
+          lazy-loading, based on Lighthouse reports.
+        </BaseListItem>
+      </BaseList>
     </template>
     <template #topRight>
       <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
@@ -39,7 +42,7 @@ useAnimation([tasksRef, screenShotSectionRef, projectInfoRef]);
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
         <h1 class="w-full text-3xl font-semibold">
-          Rakuten Card - Expense Management
+          Rakuten - Expense Management
         </h1>
         <div class="flex w-full gap-4">
           <div class="rounded-3xl border p-2">
