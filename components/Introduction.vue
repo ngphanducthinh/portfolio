@@ -31,12 +31,12 @@
     <template #bottomLeft>
       <div class="flex h-full flex-wrap">
         <div class="animation-slide-down w-full">
-          <h1 class="text-5xl font-semibold">
+          <h1 class="text-4xl font-semibold">
             {{ "Nguyen Phan Duc Thinh" }}
           </h1>
-          <h3 class="mt-2 text-3xl text-gray-600">
+          <h2 class="mt-2 text-2xl font-semibold text-gray-600">
             {{ "Senior Frontend Engineer" }}
-          </h3>
+          </h2>
         </div>
         <div class="flex w-full items-end gap-2">
           <div

@@ -15,33 +15,42 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
     <template #topLeft>
       <BaseList>
         <BaseListItem>
-          Improve web performance using asynchronous components and image
-          lazy-loading, based on Lighthouse reports.
+          Develop a "RangeGroup" component that displays multiple test result
+          ranges, such as 0-10 (Low), 10-20 (Normal), and 20-∞ (High).
+        </BaseListItem>
+        <BaseListItem>
+          Develop chart to illustrate multiple test result values over time
+          using Chart.js.
         </BaseListItem>
       </BaseList>
     </template>
     <template #topRight>
       <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
         <img
-          src="/images/detail-one/dashboard.png"
-          alt="expense-management-dashboard"
+          src="/images/detail-two/diag-test-result-viewer.png"
+          alt="diag-test-result-viewer"
           class="h-full rounded-2xl"
         />
         <img
-          src="/images/detail-one/recent-months-filter.png"
-          alt="expense-management-dashboard"
+          src="/images/detail-two/diag-test-result-viewer-2.png"
+          alt="diag-test-result-viewer-2"
           class="mt-4 h-full rounded-2xl"
         />
         <img
-          src="/images/detail-one/recent-months.png"
-          alt="expense-management-recent-months"
+          src="/images/detail-two/diag-test-result-viewer-3.png"
+          alt="diag-test-result-viewer-3"
           class="h-full rounded-2xl"
+        />
+        <img
+          src="/images/detail-two/diag-test-result-viewer-4.png"
+          alt="diag-test-result-viewer-4"
+          class="mt-4 h-full rounded-2xl"
         />
       </div>
     </template>
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
-        <h1 class="w-full text-3xl font-semibold">Diag - Design System</h1>
+        <h1 class="w-full text-3xl font-semibold">Diag - Test Result Viewer</h1>
         <div class="flex w-full gap-4">
           <div class="rounded-3xl border p-2">
             {{ "Vue 3" }}
@@ -56,12 +65,12 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
             {{ "Vitest" }}
           </div>
           <div class="rounded-3xl border p-2">
-            {{ "Cypress" }}
+            {{ "Vite" }}
           </div>
         </div>
         <div class="w-full text-gray-600">
           {{
-            "Enable bank customers to track and manage their expenses. It allows customers to categorize their expenses, set budgets, and monitor their spending habits."
+            `A complete shared "TestResultViewer" component, which is used across multiple teams, indicates detailed & friendly UI for users can read & understand their test results easily.`
           }}
         </div>
       </div>
