@@ -38,18 +38,18 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
     <template #topRight>
       <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
         <img
-          src="/images/detail-one/dashboard.png"
-          alt="expense-management-dashboard"
+          src="/images/detail-four/portal.png"
+          alt="portal"
           class="h-full rounded-2xl"
         />
         <img
-          src="/images/detail-one/recent-months-filter.png"
-          alt="expense-management-dashboard"
+          src="/images/detail-four/portal-2.png"
+          alt="portal"
           class="mt-4 h-full rounded-2xl"
         />
         <img
-          src="/images/detail-one/recent-months.png"
-          alt="expense-management-recent-months"
+          src="/images/detail-four/portal-3.png"
+          alt="portal"
           class="h-full rounded-2xl"
         />
       </div>

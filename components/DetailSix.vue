@@ -35,25 +35,7 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
         </BaseListItem>
       </BaseList>
     </template>
-    <template #topRight>
-      <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
-        <img
-          src="/images/detail-one/dashboard.png"
-          alt="expense-management-dashboard"
-          class="h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-one/recent-months-filter.png"
-          alt="expense-management-dashboard"
-          class="mt-4 h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-one/recent-months.png"
-          alt="expense-management-recent-months"
-          class="h-full rounded-2xl"
-        />
-      </div>
-    </template>
+    <template #topRight> </template>
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
         <CardTitle>Precio Fishbone</CardTitle>
