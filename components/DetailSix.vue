@@ -1,10 +1,26 @@
 <script lang="ts" setup>
 import { useAnimation } from "#imports";
 import BaseList from "~/components/Base/List.vue";
+import TagListItem from "~/components/Base/TagListItem.vue";
+import TagList from "~/components/Base/TagList.vue";
+import CardSubtitle from "~/components/Base/CardSubtitle.vue";
+import CardTitle from "~/components/Base/CardTitle.vue";
 
 /**
  * Data
  */
+const works = ref([
+  `Gained valuable experience working at Precio Fishbone Sweden (Stockholm & Malmo) and Precio Fishbone Denmark (Copenhagen) for a two-month duration.`,
+  `Led the project initiation and collaborated within a 4-member team to develop a robust "Human Resources Management" system.`,
+  `Contributed as a key member of a 5-person team in the development of a "Knowledge Management System"`,
+]);
+const technologies = ref([
+  "Vue 2",
+  "Vuetify",
+  "Typescript",
+  "C#",
+  "SharePoint",
+]);
 const screenShotSectionRef = ref<HTMLElement | null>(null);
 const projectInfoRef = ref<HTMLElement | null>(null);
 useAnimation([screenShotSectionRef, projectInfoRef]);
@@ -14,9 +30,8 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
   <CardTwoThree>
     <template #topLeft>
       <BaseList>
-        <BaseListItem>
-          Improve web performance using asynchronous components and image
-          lazy-loading, based on Lighthouse reports.
+        <BaseListItem v-for="(work, i) in works" :key="i">
+          {{ work }}
         </BaseListItem>
       </BaseList>
     </template>
@@ -41,29 +56,21 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
     </template>
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
-        <h1 class="w-full text-3xl font-semibold">Precio Fishbone - Omnia</h1>
-        <div class="flex w-full gap-4">
-          <div class="rounded-3xl border p-2">
-            {{ "Vue 3" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "SCSS" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Typescript" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Vitest" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Cypress" }}
-          </div>
-        </div>
-        <div class="w-full text-gray-600">
-          {{
-            "Enable bank customers to track and manage their expenses. It allows customers to categorize their expenses, set budgets, and monitor their spending habits."
-          }}
-        </div>
+        <CardTitle>Precio Fishbone</CardTitle>
+        <TagList>
+          <TagListItem v-for="(technology, i) in technologies" :key="i">
+            {{ technology }}
+          </TagListItem>
+        </TagList>
+        <CardSubtitle>
+          The company’s main product is an exemplary and innovative solution
+          recognized for enhancing enterprise efficiency. It was honored as a
+          top choice for SharePoint Intranet in Europe by
+          <a href="https://clearbox.com/" class="underline" target="_blank"
+            >ClearBox</a
+          >
+          in 2021.
+        </CardSubtitle>
       </div>
     </template>
     <template #bottomRight></template>

@@ -1,10 +1,29 @@
 <script lang="ts" setup>
 import { useAnimation } from "#imports";
 import BaseList from "~/components/Base/List.vue";
+import TagListItem from "~/components/Base/TagListItem.vue";
+import TagList from "~/components/Base/TagList.vue";
+import CardTitle from "~/components/Base/CardTitle.vue";
+import CardSubtitle from "~/components/Base/CardSubtitle.vue";
 
 /**
  * Data
  */
+const works = ref([
+  `Set up the tree-shakable library.`,
+  `Develop essential UI components.`,
+  `Set up StoryBook to showcase components interactively.`,
+  `Develop flexible FormValidator composable.`,
+  `Implement EventBus based on Publish/Subscribe pattern.`,
+]);
+const technologies = ref([
+  "Vue 3",
+  "Tailwind CSS",
+  "Typescript",
+  "Vite",
+  "Vitest",
+  "Storybook",
+]);
 const screenShotSectionRef = ref<HTMLElement | null>(null);
 const projectInfoRef = ref<HTMLElement | null>(null);
 useAnimation([screenShotSectionRef, projectInfoRef]);
@@ -14,9 +33,8 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
   <CardTwoThree>
     <template #topLeft>
       <BaseList>
-        <BaseListItem>
-          Improve web performance using asynchronous components and image
-          lazy-loading, based on Lighthouse reports.
+        <BaseListItem v-for="(work, i) in works" :key="i">
+          {{ work }}
         </BaseListItem>
       </BaseList>
     </template>
@@ -41,29 +59,16 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
     </template>
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
-        <h1 class="w-full text-3xl font-semibold">Diag - Patient Portal</h1>
-        <div class="flex w-full gap-4">
-          <div class="rounded-3xl border p-2">
-            {{ "Vue 3" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "SCSS" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Typescript" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Vitest" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Cypress" }}
-          </div>
-        </div>
-        <div class="w-full text-gray-600">
-          {{
-            "Enable bank customers to track and manage their expenses. It allows customers to categorize their expenses, set budgets, and monitor their spending habits."
-          }}
-        </div>
+        <CardTitle>Diag - Design System</CardTitle>
+        <TagList>
+          <TagListItem v-for="(technology, i) in technologies" :key="i">
+            {{ technology }}
+          </TagListItem>
+        </TagList>
+        <CardSubtitle>
+          A comprehensive library of reusable UI components and associated
+          guidelines, ensuring consistent and efficient development practices.
+        </CardSubtitle>
       </div>
     </template>
     <template #bottomRight></template>

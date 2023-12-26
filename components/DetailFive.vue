@@ -1,10 +1,26 @@
 <script lang="ts" setup>
 import { useAnimation } from "#imports";
 import BaseList from "~/components/Base/List.vue";
+import TagListItem from "~/components/Base/TagListItem.vue";
+import TagList from "~/components/Base/TagList.vue";
+import CardTitle from "~/components/Base/CardTitle.vue";
+import CardSubtitle from "~/components/Base/CardSubtitle.vue";
 
 /**
  * Data
  */
+const works = ref([
+  `Develop screens for processing checkups with workflow.`,
+  `Implement templates for PDF printing using HTML + CSS.`,
+]);
+const technologies = ref([
+  "Vue 2",
+  "Bootstrap",
+  "Javascript",
+  "Webpack",
+  "Jest",
+  "Cypress",
+]);
 const screenShotSectionRef = ref<HTMLElement | null>(null);
 const projectInfoRef = ref<HTMLElement | null>(null);
 useAnimation([screenShotSectionRef, projectInfoRef]);
@@ -14,56 +30,41 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
   <CardTwoThree>
     <template #topLeft>
       <BaseList>
-        <BaseListItem>
-          Improve web performance using asynchronous components and image
-          lazy-loading, based on Lighthouse reports.
+        <BaseListItem v-for="(work, i) in works" :key="i">
+          {{ work }}
         </BaseListItem>
       </BaseList>
     </template>
     <template #topRight>
       <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
         <img
-            src="/images/detail-one/dashboard.png"
-            alt="expense-management-dashboard"
-            class="h-full rounded-2xl"
+          src="/images/detail-one/dashboard.png"
+          alt="expense-management-dashboard"
+          class="h-full rounded-2xl"
         />
         <img
-            src="/images/detail-one/recent-months-filter.png"
-            alt="expense-management-dashboard"
-            class="mt-4 h-full rounded-2xl"
+          src="/images/detail-one/recent-months-filter.png"
+          alt="expense-management-dashboard"
+          class="mt-4 h-full rounded-2xl"
         />
         <img
-            src="/images/detail-one/recent-months.png"
-            alt="expense-management-recent-months"
-            class="h-full rounded-2xl"
+          src="/images/detail-one/recent-months.png"
+          alt="expense-management-recent-months"
+          class="h-full rounded-2xl"
         />
       </div>
     </template>
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
-        <h1 class="w-full text-3xl font-semibold">Diag - Sapoche</h1>
-        <div class="flex w-full gap-4">
-          <div class="rounded-3xl border p-2">
-            {{ "Vue 3" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "SCSS" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Typescript" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Vitest" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Cypress" }}
-          </div>
-        </div>
-        <div class="w-full text-gray-600">
-          {{
-            "Enable bank customers to track and manage their expenses. It allows customers to categorize their expenses, set budgets, and monitor their spending habits."
-          }}
-        </div>
+        <CardTitle>Diag - Sapoche</CardTitle>
+        <TagList>
+          <TagListItem v-for="(technology, i) in technologies" :key="i">
+            {{ technology }}
+          </TagListItem>
+        </TagList>
+        <CardSubtitle>
+          A system for Diag staff to perform customers' health checkups.
+        </CardSubtitle>
       </div>
     </template>
     <template #bottomRight></template>

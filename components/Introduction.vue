@@ -17,7 +17,7 @@
 
         <a
           href="https://certificates.dev/vuejs/certificates/9a23b63b-5b56-4f47-8c7e-3760903b1ed2"
-          class="animation-slide-down"
+          class="animation-slide-down hover:drop-shadow"
           target="_blank"
         >
           <img
@@ -44,7 +44,7 @@
           />
           <a
             href="https://www.linkedin.com/in/ngphanducthinh/"
-            class="animation-chevron flex h-12 w-12 items-center justify-center rounded-full bg-gray-200"
+            class="animation-chevron flex h-12 w-12 items-center justify-center rounded-full bg-gray-200 hover:drop-shadow"
             target="_blank"
           >
             <BaseIcon icon="linkedin-in" />
@@ -52,7 +52,7 @@
 
           <a
             href="https://github.com/ngphanducthinh"
-            class="animation-chevron flex h-12 w-12 items-center justify-center rounded-full bg-gray-200"
+            class="animation-chevron flex h-12 w-12 items-center justify-center rounded-full bg-gray-200 hover:drop-shadow"
             target="_blank"
           >
             <BaseIcon icon="github" />
@@ -72,8 +72,7 @@
             icon="hand-point-down"
             :width="36"
             :height="36"
-            color="rgb(107 114 128)"
-            class="animate-bounce"
+            class="animate-bounce text-[#6b7280]"
           />
         </div>
       </div>

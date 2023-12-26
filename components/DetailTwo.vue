@@ -1,10 +1,25 @@
 <script lang="ts" setup>
 import { useAnimation } from "#imports";
 import BaseList from "~/components/Base/List.vue";
+import TagListItem from "~/components/Base/TagListItem.vue";
+import TagList from "~/components/Base/TagList.vue";
+import CardTitle from "~/components/Base/CardTitle.vue";
+import CardSubtitle from "~/components/Base/CardSubtitle.vue";
 
 /**
  * Data
  */
+const works = ref([
+  `Develop a "RangeGroup" component that displays multiple test result ranges, such as 0-10 (Low), 10-20 (Normal), and 20-∞ (High).`,
+  `Develop chart to illustrate multiple test result values over time using Chart.js.`,
+]);
+const technologies = ref([
+  "Vue 3",
+  "Tailwind CSS",
+  "Typescript",
+  "Vite",
+  "Vitest",
+]);
 const screenShotSectionRef = ref<HTMLElement | null>(null);
 const projectInfoRef = ref<HTMLElement | null>(null);
 useAnimation([screenShotSectionRef, projectInfoRef]);
@@ -14,13 +29,8 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
   <CardTwoThree>
     <template #topLeft>
       <BaseList>
-        <BaseListItem>
-          Develop a "RangeGroup" component that displays multiple test result
-          ranges, such as 0-10 (Low), 10-20 (Normal), and 20-∞ (High).
-        </BaseListItem>
-        <BaseListItem>
-          Develop chart to illustrate multiple test result values over time
-          using Chart.js.
+        <BaseListItem v-for="(work, i) in works" :key="i">
+          {{ work }}
         </BaseListItem>
       </BaseList>
     </template>
@@ -50,29 +60,17 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
     </template>
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
-        <h1 class="w-full text-3xl font-semibold">Diag - Test Result Viewer</h1>
-        <div class="flex w-full gap-4">
-          <div class="rounded-3xl border p-2">
-            {{ "Vue 3" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "SCSS" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Typescript" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Vitest" }}
-          </div>
-          <div class="rounded-3xl border p-2">
-            {{ "Vite" }}
-          </div>
-        </div>
-        <div class="w-full text-gray-600">
-          {{
-            `A complete shared "TestResultViewer" component, which is used across multiple teams, indicates detailed & friendly UI for users can read & understand their test results easily.`
-          }}
-        </div>
+        <CardTitle>Diag - Test Result Viewer</CardTitle>
+        <TagList>
+          <TagListItem v-for="(technology, i) in technologies" :key="i">
+            {{ technology }}
+          </TagListItem>
+        </TagList>
+        <CardSubtitle>
+          A complete shared "TestResultViewer" component, which is used across
+          multiple teams, indicates detailed & friendly UI for users can read &
+          understand their test results easily.
+        </CardSubtitle>
       </div>
     </template>
     <template #bottomRight></template>

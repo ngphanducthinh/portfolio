@@ -10,8 +10,8 @@ import CardSubtitle from "~/components/Base/CardSubtitle.vue";
  * Data
  */
 const works = ref([
-  // TODO: Add more...
   "Improve web performance using asynchronous components and image lazy-loading, based on Lighthouse reports.",
+  "Implement Pie Chart & Bar Chart to indicate user expenses.",
 ]);
 const technologies = ref(["Nuxt 3", "SCSS", "Javascript", "Playwright"]);
 const screenShotSectionRef = ref<HTMLElement | null>(null);
