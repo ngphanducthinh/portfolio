@@ -1,6 +1,6 @@
 export default function (
   elements: Array<Ref<HTMLElement | null>>,
-  offset: number = 240,
+  offset: number = 200,
 ) {
   const init = () => {
     elements.forEach((element) => {

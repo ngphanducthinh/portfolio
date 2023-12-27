@@ -50,8 +50,8 @@ useAnimation([nextStepRef, projectInfoRef]);
             <BaseIcon
               icon="linkedin-in"
               class="text-[#0a66c2]"
-              width="28"
-              height="28"
+              :width="28"
+              :height="28"
             />
           </a>
         </div>

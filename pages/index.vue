@@ -16,7 +16,7 @@ const cardWrapperRefs = ref<HTMLDivElement[]>([]);
 const frozenGap = 400;
 const frozenGapScaleBlur = frozenGap * 0.4;
 let cardWrapperHeight = 0;
-let breakPoints: number[] = [];
+let breakpoints: number[] = [];
 const cards = shallowRef([
   Introduction,
   DetailOne,
@@ -33,8 +33,8 @@ const cards = shallowRef([
  */
 const isScrollingWithinGap = (index: number, gap: number) =>
   index > 0 &&
-  breakPoints[index - 1] <= scrollY &&
-  scrollY < breakPoints[index - 1] + gap;
+  breakpoints[index - 1] <= scrollY &&
+  scrollY < breakpoints[index - 1] + gap;
 
 const updateCardStyle = (index: number, currentScrollYInsideCard: number) => {
   const currentScrollYInsideCardActual = Math.max(
@@ -61,7 +61,7 @@ const updateNextCardStyle = (
   currentScrollYInsideCard: number,
 ) => {
   const translateY = Math.max(0, frozenGap - currentScrollYInsideCard);
-  const translateYRatio = 0.2;
+  const translateYRatio = 0.8;
   cardWrapperRefs.value[index + 1].style.transform = `translateY(${
     translateY * translateYRatio
   }px)`;
@@ -77,38 +77,44 @@ const scrollToTop = () => {
   }
 };
 
+const onScroll = () => {
+  const scrollY = window.scrollY;
+  const index = Math.floor(scrollY / cardWrapperHeight);
+  const currentScrollYInsideCard = scrollY - cardWrapperHeight * index;
+
+  if (isScrollingWithinGap(index, frozenGap)) {
+    if (index < cardWrapperRefs.value.length - 1) {
+      updateNextCardStyle(index, currentScrollYInsideCard);
+    }
+  } else {
+    if (index === 0) {
+      updateNextCardStyle(index, currentScrollYInsideCard);
+    } else {
+      resetNextCardStyle(index);
+    }
+  }
+
+  if (isScrollingWithinGap(index, frozenGapScaleBlur)) {
+    resetCardStyle(index);
+  } else {
+    updateCardStyle(index, currentScrollYInsideCard);
+  }
+};
+
 onMounted(() => {
   setTimeout(() => {
     scrollToTop();
   });
   cardWrapperHeight = cardWrapperRefs.value[0].offsetHeight;
-  breakPoints = cardWrapperRefs.value.map(
+  breakpoints = cardWrapperRefs.value.map(
     (_, i) => cardWrapperHeight * (i + 1),
   );
 
-  window.addEventListener("scroll", function () {
-    const scrollY = window.scrollY;
-    const index = Math.floor(scrollY / cardWrapperHeight);
-    const currentScrollYInsideCard = scrollY - cardWrapperHeight * index;
+  window.addEventListener("scroll", onScroll);
+});
 
-    if (isScrollingWithinGap(index, frozenGap)) {
-      if (index < cardWrapperRefs.value.length - 1) {
-        updateNextCardStyle(index, currentScrollYInsideCard);
-      }
-    } else {
-      if (index === 0) {
-        updateNextCardStyle(index, currentScrollYInsideCard);
-      } else {
-        resetNextCardStyle(index);
-      }
-    }
-
-    if (isScrollingWithinGap(index, frozenGapScaleBlur)) {
-      resetCardStyle(index);
-    } else {
-      updateCardStyle(index, currentScrollYInsideCard);
-    }
-  });
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", onScroll);
 });
 </script>
 
@@ -133,7 +139,7 @@ onMounted(() => {
 }
 
 .card-wrapper {
-  padding: 24px;
+  padding: 32px;
   height: 100dvh;
   position: sticky;
   top: 0;
@@ -143,7 +149,7 @@ onMounted(() => {
 
 .card {
   border-radius: 16px;
-  height: calc(100dvh - 48px);
+  height: calc(100dvh - 64px);
   transition: transform 120ms ease-out;
   background-color: whitesmoke;
 }
