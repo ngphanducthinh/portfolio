@@ -62,10 +62,14 @@
     </template>
     <template #bottomRight>
       <div class="flex h-full flex-col flex-wrap justify-between">
-        <div class="animation-slide-down text-2xl text-gray-800">
-          {{
-            "Possess a professional background of 7 years as a Software Developer, with a primary emphasis on Frontend development for 6 years."
-          }}
+        <div
+          class="animation-slide-down underline-smooth text-2xl text-gray-800"
+        >
+          <span>
+            Possess a professional background of 7 years as a Software
+            Developer, with a primary emphasis on Frontend development for 6
+            years.
+          </span>
         </div>
         <div class="flex justify-end">
           <BaseIcon
@@ -79,3 +83,21 @@
     </template>
   </CardTwoOne>
 </template>
+
+<style scoped lang="scss">
+.underline-smooth {
+  span {
+    background-image: linear-gradient(90deg, #c2e59c, #64b3f4);
+    background-size: 0 3px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 600ms ease;
+  }
+
+  &:hover {
+    span {
+      background-size: 100% 3px;
+    }
+  }
+}
+</style>
