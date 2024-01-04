@@ -27,6 +27,29 @@
           />
         </a>
       </div>
+
+      <div class="mt-3 flex flex-wrap items-center justify-end gap-4">
+        <div class="animation-slide-down">
+          <div class="flex items-center rounded-3xl bg-white px-4 py-1">
+            <span class="text-gray-600">{{ "Personal" }}</span>
+            &nbsp;
+            <span class="font-semibold">{{ "Design System" }}</span>
+          </div>
+        </div>
+
+        <a
+          href="https://ngphanducthinh.github.io/7pmlabs-design-system"
+          class="animation-slide-down flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#c2e59c] to-[#64b3f4] hover:drop-shadow"
+          target="_blank"
+        >
+          <BaseIcon
+            icon="paintbrush-solid"
+            :width="32"
+            :height="32"
+            class="text-white"
+          />
+        </a>
+      </div>
     </template>
     <template #bottomLeft>
       <div class="flex h-full flex-wrap">
