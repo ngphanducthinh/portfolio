@@ -36,22 +36,24 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
       </BaseList>
     </template>
     <template #topRight>
-      <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
-        <img
-          src="/images/detail-four/portal.png"
-          alt="portal"
-          class="h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-four/portal-2.png"
-          alt="portal"
-          class="mt-4 h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-four/portal-3.png"
-          alt="portal"
-          class="h-full rounded-2xl"
-        />
+      <div class="flex h-full justify-end pl-8" ref="screenShotSectionRef">
+        <BaseInfiniteHorizontalScroll inner-class="h-full">
+          <img
+            src="/images/detail-four/portal.png"
+            alt="portal"
+            class="rounded-2xl"
+          />
+          <img
+            src="/images/detail-four/portal-2.png"
+            alt="portal"
+            class="rounded-2xl"
+          />
+          <img
+            src="/images/detail-four/portal-3.png"
+            alt="portal"
+            class="rounded-2xl"
+          />
+        </BaseInfiniteHorizontalScroll>
       </div>
     </template>
     <template #bottomLeft>
@@ -68,6 +70,5 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
         </CardSubtitle>
       </div>
     </template>
-    <template #bottomRight></template>
   </CardTwoThree>
 </template>

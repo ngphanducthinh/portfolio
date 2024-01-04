@@ -39,27 +39,29 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
       </BaseList>
     </template>
     <template #topRight>
-      <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
-        <img
-          src="/images/detail-three/design-system.png"
-          alt="design-system"
-          class="h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-three/design-system-2.png"
-          alt="design-system"
-          class="mt-4 h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-three/design-system-3.png"
-          alt="design-system"
-          class="h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-three/design-system-4.png"
-          alt="design-system"
-          class="mt-4 h-full rounded-2xl"
-        />
+      <div class="flex h-full justify-end pl-8" ref="screenShotSectionRef">
+        <BaseInfiniteHorizontalScroll inner-class="h-full">
+          <img
+            src="/images/detail-three/design-system.png"
+            alt="design-system"
+            class="rounded-2xl"
+          />
+          <img
+            src="/images/detail-three/design-system-2.png"
+            alt="design-system"
+            class="rounded-2xl"
+          />
+          <img
+            src="/images/detail-three/design-system-3.png"
+            alt="design-system"
+            class="rounded-2xl"
+          />
+          <img
+            src="/images/detail-three/design-system-4.png"
+            alt="design-system"
+            class="rounded-2xl"
+          />
+        </BaseInfiniteHorizontalScroll>
       </div>
     </template>
     <template #bottomLeft>
@@ -76,6 +78,5 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
         </CardSubtitle>
       </div>
     </template>
-    <template #bottomRight></template>
   </CardTwoThree>
 </template>

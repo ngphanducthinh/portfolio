@@ -35,27 +35,29 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
       </BaseList>
     </template>
     <template #topRight>
-      <div class="flex h-full justify-end gap-4" ref="screenShotSectionRef">
-        <img
-          src="/images/detail-two/diag-test-result-viewer.png"
-          alt="diag-test-result-viewer"
-          class="h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-two/diag-test-result-viewer-2.png"
-          alt="diag-test-result-viewer-2"
-          class="mt-4 h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-two/diag-test-result-viewer-3.png"
-          alt="diag-test-result-viewer-3"
-          class="h-full rounded-2xl"
-        />
-        <img
-          src="/images/detail-two/diag-test-result-viewer-4.png"
-          alt="diag-test-result-viewer-4"
-          class="mt-4 h-full rounded-2xl"
-        />
+      <div class="flex h-full justify-end pl-8" ref="screenShotSectionRef">
+        <BaseInfiniteHorizontalScroll inner-class="h-full">
+          <img
+            src="/images/detail-two/diag-test-result-viewer.png"
+            alt="diag-test-result-viewer"
+            class="rounded-2xl"
+          />
+          <img
+            src="/images/detail-two/diag-test-result-viewer-2.png"
+            alt="diag-test-result-viewer-2"
+            class="rounded-2xl"
+          />
+          <img
+            src="/images/detail-two/diag-test-result-viewer-3.png"
+            alt="diag-test-result-viewer-3"
+            class="rounded-2xl"
+          />
+          <img
+            src="/images/detail-two/diag-test-result-viewer-4.png"
+            alt="diag-test-result-viewer-4"
+            class="rounded-2xl"
+          />
+        </BaseInfiniteHorizontalScroll>
       </div>
     </template>
     <template #bottomLeft>
@@ -73,6 +75,5 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
         </CardSubtitle>
       </div>
     </template>
-    <template #bottomRight></template>
   </CardTwoThree>
 </template>

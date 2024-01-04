@@ -11,7 +11,7 @@ import CardSubtitle from "~/components/Base/CardSubtitle.vue";
  */
 const works = ref([
   `Develop screens for processing checkups with workflow.`,
-  `Implement templates for PDF printing using HTML + CSS.`,
+  `Implement templates for PDF printing using HTML & CSS.`,
 ]);
 const technologies = ref([
   "Vue 2",
