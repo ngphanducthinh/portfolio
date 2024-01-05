@@ -57,7 +57,10 @@ const updateCardStyle = (index: number, currentScrollYInsideCard: number) => {
 
 const resetCardStyle = (index: number) => {
   cardRefs.value[index].style.transform = `scale(1)`;
-  cardWrapperRefs.value[index].style.filter = `blur(0)`;
+  /**
+   * NOTE: This "filter: blur" causes lag scrolling, disable it for now
+   */
+  // cardWrapperRefs.value[index].style.filter = `blur(0)`;
 };
 
 const updateNextCardStyle = (
