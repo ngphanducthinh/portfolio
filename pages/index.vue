@@ -42,13 +42,17 @@ const updateCardStyle = (index: number, currentScrollYInsideCard: number) => {
     currentScrollYInsideCard - frozenGapScaleBlur,
   );
   const scaleValue = 1 - currentScrollYInsideCardActual / cardWrapperHeight;
+
   cardRefs.value[index].style.transform = `scale(${Math.max(
     0.65,
     scaleValue,
   )})`;
-  cardWrapperRefs.value[index].style.filter = `blur(${
-    (1 - scaleValue) * 12
-  }px)`;
+  /**
+   * NOTE: This "filter: blur" causes lag scrolling, disable it for now
+   */
+  // cardWrapperRefs.value[index].style.filter = `blur(${
+  //   (1 - scaleValue) * 12
+  // }px)`;
 };
 
 const resetCardStyle = (index: number) => {
