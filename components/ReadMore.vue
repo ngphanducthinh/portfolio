@@ -32,11 +32,11 @@ const sendMail = () => {
 </script>
 
 <template>
-  <CardTwoThree>
+  <CardTwoOne>
     <template #topLeft></template>
     <template #bottomLeft>
       <div class="flex flex-wrap gap-4" ref="projectInfoRef">
-        <CardTitle>More projects?</CardTitle>
+        <CardTitle>There's still more...</CardTitle>
         <BaseInfiniteHorizontalScroll>
           <TagList>
             <TagListItem v-for="(technology, i) in technologies" :key="i">
@@ -45,7 +45,17 @@ const sendMail = () => {
           </TagList>
         </BaseInfiniteHorizontalScroll>
         <CardSubtitle>
-          Check out my <b>LinkedIn</b> or contact me for
+          Please feel free to check out my
+          <b>
+            <a
+              class="cursor-pointer hover:text-[#64b3f4]"
+              href="https://www.linkedin.com/in/ngphanducthinh/"
+              target="_blank"
+            >
+              LinkedIn
+            </a>
+          </b>
+          profile or contact me for a copy of my
           <b>
             <a class="cursor-pointer hover:text-[#64b3f4]" @click="sendMail">
               Résume
@@ -55,15 +65,14 @@ const sendMail = () => {
         </CardSubtitle>
       </div>
     </template>
-    <template #topRight> </template>
-    <template #bottomRight>
+    <template #topRight>
       <div
-        class="flex h-full flex-wrap items-end justify-end"
+        class="flex h-full flex-wrap items-start justify-end"
         ref="nextStepRef"
       >
         <div class="flex items-center justify-end gap-x-4">
           <div class="flex items-center rounded-3xl bg-white px-4 py-1">
-            <span class="text-gray-600">{{ "Next, check out my" }}</span>
+            <span class="text-gray-600">{{ "Here, check out my" }}</span>
             &nbsp;
             <span class="font-semibold">{{ "LinkedIn" }}</span>
           </div>
@@ -82,5 +91,6 @@ const sendMail = () => {
         </div>
       </div>
     </template>
-  </CardTwoThree>
+    <template #bottomRight></template>
+  </CardTwoOne>
 </template>
