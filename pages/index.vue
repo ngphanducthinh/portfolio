@@ -6,6 +6,10 @@ import DetailThree from "~/components/DetailThree.vue";
 import DetailFour from "~/components/DetailFour.vue";
 import ReadMore from "~/components/ReadMore.vue";
 
+useHead({
+  title: "Thinh's Portfolio",
+});
+
 /**
  * Data
  */
