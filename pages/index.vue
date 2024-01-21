@@ -5,6 +5,7 @@ import DetailTwo from "~/components/DetailTwo.vue";
 import DetailThree from "~/components/DetailThree.vue";
 import DetailFour from "~/components/DetailFour.vue";
 import ReadMore from "~/components/ReadMore.vue";
+import { throttle } from "@/utils/CommonUtils";
 
 useHead({
   title: "Thinh's Portfolio",
@@ -108,6 +109,8 @@ const onScroll = () => {
   }
 };
 
+const onScrollThrottle = throttle(onScroll, 20);
+
 onMounted(() => {
   setTimeout(() => {
     scrollToTop();
@@ -117,11 +120,11 @@ onMounted(() => {
     (_, i) => cardWrapperHeight * (i + 1),
   );
 
-  window.addEventListener("scroll", onScroll);
+  window.addEventListener("scroll", onScrollThrottle);
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener("scroll", onScroll);
+  window.removeEventListener("scroll", onScrollThrottle);
 });
 </script>
 
