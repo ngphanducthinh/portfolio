@@ -90,18 +90,20 @@ const onScroll = () => {
   const index = Math.floor(scrollY / cardWrapperHeight);
   const currentScrollYInsideCard = scrollY - cardWrapperHeight * index;
 
-  if (isScrollingWithinGap(index, frozenGap)) {
-    if (index < cardWrapperRefs.value.length - 1) {
-      updateNextCardStyle(index, currentScrollYInsideCard);
-    }
-  } else {
-    if (index === 0) {
-      updateNextCardStyle(index, currentScrollYInsideCard);
-    } else {
-      resetNextCardStyle(index);
-    }
-  }
+  // Slide up transition animation
+  // if (isScrollingWithinGap(index, frozenGap)) {
+  //   if (index < cardWrapperRefs.value.length - 1) {
+  //     updateNextCardStyle(index, currentScrollYInsideCard);
+  //   }
+  // } else {
+  //   if (index === 0) {
+  //     updateNextCardStyle(index, currentScrollYInsideCard);
+  //   } else {
+  //     resetNextCardStyle(index);
+  //   }
+  // }
 
+  // Scale & blur transition animation
   if (isScrollingWithinGap(index, frozenGapScaleBlur)) {
     resetCardStyle(index);
   } else {
@@ -150,7 +152,7 @@ onBeforeUnmount(() => {
 
 .card-wrapper {
   --padding-x: 32px;
-  --padding-y: 56px;
+  --padding-y: 48px;
   --card-border-radius: 16px;
 
   padding: var(--padding-y) var(--padding-x);

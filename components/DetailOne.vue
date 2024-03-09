@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useAnimation } from "#imports";
 import BaseList from "~/components/Base/List.vue";
 import TagList from "~/components/Base/TagList.vue";
 import TagListItem from "~/components/Base/TagListItem.vue";
@@ -13,9 +12,6 @@ const works = ref([
   "Improve web performance using asynchronous components and image lazy-loading, based on Lighthouse reports.",
 ]);
 const technologies = ref(["Nuxt 3", "SCSS", "Javascript", "Playwright"]);
-const screenShotSectionRef = ref<HTMLElement | null>(null);
-const projectInfoRef = ref<HTMLElement | null>(null);
-useAnimation([screenShotSectionRef, projectInfoRef]);
 </script>
 
 <template>
@@ -28,7 +24,7 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
       </BaseList>
     </template>
     <template #topRight>
-      <div class="flex h-full justify-end pl-8" ref="screenShotSectionRef">
+      <div class="flex h-full justify-end pl-8">
         <BaseInfiniteHorizontalScroll inner-class="h-full">
           <img
             src="/images/detail-one/dashboard.png"
@@ -49,7 +45,7 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
       </div>
     </template>
     <template #bottomLeft>
-      <div class="flex flex-wrap gap-4" ref="projectInfoRef">
+      <div class="flex flex-wrap gap-4">
         <CardTitle> Rakuten - Expense Management</CardTitle>
         <TagList>
           <TagListItem v-for="(technology, i) in technologies" :key="i">

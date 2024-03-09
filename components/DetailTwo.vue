@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useAnimation } from "#imports";
 import BaseList from "~/components/Base/List.vue";
 import TagListItem from "~/components/Base/TagListItem.vue";
 import TagList from "~/components/Base/TagList.vue";
@@ -20,9 +19,6 @@ const technologies = ref([
   "Vite",
   "Vitest",
 ]);
-const screenShotSectionRef = ref<HTMLElement | null>(null);
-const projectInfoRef = ref<HTMLElement | null>(null);
-useAnimation([screenShotSectionRef, projectInfoRef]);
 </script>
 
 <template>
@@ -35,7 +31,7 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
       </BaseList>
     </template>
     <template #topRight>
-      <div class="flex h-full justify-end pl-8" ref="screenShotSectionRef">
+      <div class="flex h-full justify-end pl-8">
         <BaseInfiniteHorizontalScroll inner-class="h-full">
           <img
             src="/images/detail-two/diag-test-result-viewer.png"
@@ -61,7 +57,7 @@ useAnimation([screenShotSectionRef, projectInfoRef]);
       </div>
     </template>
     <template #bottomLeft>
-      <div class="flex flex-wrap gap-4" ref="projectInfoRef">
+      <div class="flex flex-wrap gap-4">
         <CardTitle>Diag - Test Result Viewer</CardTitle>
         <TagList>
           <TagListItem v-for="(technology, i) in technologies" :key="i">
