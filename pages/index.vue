@@ -149,18 +149,22 @@ onBeforeUnmount(() => {
 }
 
 .card-wrapper {
-  padding: 32px;
+  --padding-x: 32px;
+  --padding-y: 56px;
+  --card-border-radius: 16px;
+
+  padding: var(--padding-y) var(--padding-x);
   height: 100dvh;
   position: sticky;
   top: 0;
   background-color: transparent;
   transition: transform 200ms ease-out;
-}
 
-.card {
-  border-radius: 16px;
-  height: calc(100dvh - 64px);
-  transition: transform 120ms ease-out;
-  background-color: whitesmoke;
+  .card {
+    border-radius: var(--card-border-radius);
+    height: calc(100dvh - var(--padding-y) * 2);
+    transition: transform 120ms ease-out;
+    background-color: whitesmoke;
+  }
 }
 </style>
