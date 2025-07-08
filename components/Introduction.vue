@@ -58,7 +58,7 @@
             {{ "Nguyen Phan Duc Thinh" }}
           </h1>
           <h2 class="mt-2 text-2xl font-semibold text-gray-600">
-            {{ "Senior Frontend Engineer" }}
+            {{ "Principal Frontend Engineer" }}
           </h2>
         </div>
         <div class="flex w-full items-end gap-2">
