@@ -9,14 +9,16 @@ import CardTitle from "~/components/Base/CardTitle.vue";
  * Data
  */
 const technologies = ref([
-  "Vue 2",
-  "Vuetify",
-  "Bootstrap",
+  "Vue",
+  "Tailwind CSS",
   "Typescript",
-  "C#",
-  "SharePoint",
+  "SCSS",
+  "Vite",
   "Webpack",
+  "Vitest",
   "Jest",
+  "GitHub Actions",
+  "Playwright",
   "Cypress",
 ]);
 const nextStepRef = ref<HTMLElement | null>(null);

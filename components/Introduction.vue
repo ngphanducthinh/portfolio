@@ -63,7 +63,7 @@
         </div>
         <div class="flex w-full items-end gap-2">
           <div
-            class="animation-chevron h-[140px] w-[140px] rounded-full bg-[url('/images/avatar.jpeg')] bg-cover bg-center bg-no-repeat"
+            class="animation-chevron h-[140px] w-[140px] rounded-full bg-[url('/images/avatar.jpg')] bg-cover bg-center bg-no-repeat"
           />
           <a
             href="https://www.linkedin.com/in/ngphanducthinh/"
@@ -89,8 +89,8 @@
           class="animation-slide-down underline-smooth text-2xl text-gray-800"
         >
           <span>
-            Possess a professional background of 7 years as a Software
-            Developer, with a primary emphasis on Frontend development for 6
+            Possess a professional background of 8 years as a Software
+            Developer, with a primary emphasis on Frontend development for 7
             years.
           </span>
         </div>

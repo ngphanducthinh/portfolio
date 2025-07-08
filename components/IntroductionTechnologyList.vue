@@ -29,7 +29,7 @@ const stickers = ref([
     image: "/images/typescript.png",
     position: {
       top: 180,
-      right: 390,
+      right: 440,
     },
   },
   {

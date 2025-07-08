@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Introduction from "~/components/Introduction.vue";
+import DetailZero from "~/components/DetailZero.vue";
 import DetailOne from "~/components/DetailOne.vue";
 import DetailTwo from "~/components/DetailTwo.vue";
 import DetailThree from "~/components/DetailThree.vue";
@@ -22,6 +23,7 @@ let cardWrapperHeight = 0;
 let breakpoints: number[] = [];
 const cards = shallowRef([
   Introduction,
+  DetailZero,
   DetailOne,
   DetailTwo,
   DetailThree,
